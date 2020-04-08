@@ -8,7 +8,7 @@ Before using scripts install dependencies by `npm i` in project folder.
 
 In the project directory, you can run:
 
-### `npm start <filename> <keyFile> <flag>`
+`npm start <filename> <keyFile> <flag>`
 
 To encrypt the file use flag /e
 
