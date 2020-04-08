@@ -1,0 +1,21 @@
+{
+  "name": "miszki",
+  "version": "0.0.1",
+  "description": "Information Security Lab",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "lint": "eslint --fix . --ext .js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oceanEcho/miszki.git"
+  },
+  "author": "Ivan Zaytsev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oceanEcho/miszki/issues"
+  },
+  "homepage": "https://github.com/oceanEcho/miszki#readme"
+}
