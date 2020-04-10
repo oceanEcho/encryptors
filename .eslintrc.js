@@ -40,6 +40,7 @@ module.exports = {
         'space-in-parens': [
             'error',
             'never'
-        ]
+        ],
+        'no-console': 'off',
     }
 };
