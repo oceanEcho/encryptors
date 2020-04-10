@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/oceanEcho/miszki#readme",
   "dependencies": {
+    "bitset": "^5.1.1",
     "node-gost": "^1.0.2"
   }
 }

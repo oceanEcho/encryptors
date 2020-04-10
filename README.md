@@ -8,13 +8,23 @@ Before using scripts install dependencies by `npm i` in project folder.
 
 In the project directory, you can run:
 
-`npm start <filename> <keyFile> <flag>`
+`npm start <algorithm> <filename> <keyFile> <flag>`
+
+Availible algorithms:
+
+`gost-ecb` - GOST 28147 with ECB
+`stream` - stream encryption
+
+Availible flags:
+
+`/e` - encrypt filee and generate key file
+`/d` - decrypt file
 
 To encrypt the file use flag /e
 
-Example: `npm start file.txt key /e`
+Example: `npm start gost-ecb file.txt key /e`
 
 To decrypt the file use flag /d
 
-Example: `npm start file.txt key /d`
+Example: `npm start gost-ecb file.txt key /d`
  

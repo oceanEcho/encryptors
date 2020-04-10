@@ -1,6 +1,8 @@
 const fs = require('fs');
 const gostCrypto = require('node-gost');
 
+const READ_BUFFER_SIZE = 512;
+
 const { convertBufferToArrayBuffer, convertArrayBufferToBuffer, removeExtension } = require('../utils/utils');
 
 async function generateKey() {
@@ -41,9 +43,9 @@ async function decryptData(key, dataBuffer) {
 
 const gostEcb = async (args) => {
   if (args[0] && args[1] && args[2] === '/e') {
-    console.log('Info: Encription process was started...');
+    console.log('Info: Encryption process was started...');
 
-    const proccessData = async (data, key, writeStream) => {
+    const processData = async (data, key, writeStream) => {
       if (data) {
         const encryptedData = await encryptData(key, data);
         writeStream.write(encryptedData);
@@ -52,7 +54,7 @@ const gostEcb = async (args) => {
 
     const done = (exportedKeyBuffer, keyWriteStream) => {
       keyWriteStream.write(convertArrayBufferToBuffer(exportedKeyBuffer));
-      console.log('Done: Encrypting process is successfully complete.');
+      console.log('Done: Encryption process is successfully complete.');
     };
 
     const key = await generateKey();
@@ -60,17 +62,17 @@ const gostEcb = async (args) => {
     
     const writeStream = fs.createWriteStream(`${args[0]}.encrypted`, { flags: 'w' });
     const keyWriteStream = fs.createWriteStream(args[1], { flags: 'w' });
-    const readStream = fs.createReadStream(args[0], { highWaterMark: 2048 });
+    const readStream = fs.createReadStream(args[0], { highWaterMark: READ_BUFFER_SIZE });
 
-    readStream.on('readable', () => proccessData(readStream.read(), key, writeStream));
+    readStream.on('readable', () => processData(readStream.read(), key, writeStream));
     readStream.on('error', (error) => {
       console.log(error);
     });
     readStream.on('end', () => done(exportedKeyBuffer, keyWriteStream));
   } else if (args[0] && args[1] && args[2] === '/d') {
-    console.log('Info: Decription process was started...');
+    console.log('Info: Decryption process was started...');
 
-    const proccessData = async (data, key, writeStream) => {
+    const processData = async (data, key, writeStream) => {
       if (data) {
         const encryptedData = await decryptData(key, data);
         writeStream.write(encryptedData);
@@ -78,22 +80,22 @@ const gostEcb = async (args) => {
     };
 
     const done = () => {
-      console.log('Done: Decrypting process is successfully complete.');
+      console.log('Done: Decryption process is successfully complete.');
     };
 
     fs.readFile(args[1], async (error, keyData) => {
       const key = await importKey(keyData);
       const writeStream = fs.createWriteStream(`decrypted_${removeExtension(args[0])}`, { flags: 'w' });
-      const readStream = fs.createReadStream(args[0], { highWaterMark: 2048 });
+      const readStream = fs.createReadStream(args[0], { highWaterMark: READ_BUFFER_SIZE });
 
-      readStream.on('readable', () => proccessData(readStream.read(), key, writeStream));
+      readStream.on('readable', () => processData(readStream.read(), key, writeStream));
       readStream.on('error', (error) => {
         console.log(error);
       });
       readStream.on('end', done);
     });
   } else {
-    console.log('Error: Invalid arguments!');
+    throw new Error('Invalid arguments!');
   }
 };
 
