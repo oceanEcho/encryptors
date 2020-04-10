@@ -18,7 +18,7 @@ Availible algorithms:
 
 Availible flags:
 
-`/e` - encrypt filee and generate key file
+`/e` - encrypt file and generate key file
 
 `/d` - decrypt file
 
