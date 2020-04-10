@@ -13,11 +13,13 @@ In the project directory, you can run:
 Availible algorithms:
 
 `gost-ecb` - GOST 28147 with ECB
+
 `stream` - stream encryption
 
 Availible flags:
 
 `/e` - encrypt filee and generate key file
+
 `/d` - decrypt file
 
 To encrypt the file use flag /e
@@ -27,4 +29,3 @@ Example: `npm start gost-ecb file.txt key /e`
 To decrypt the file use flag /d
 
 Example: `npm start gost-ecb file.txt key /d`
- 
