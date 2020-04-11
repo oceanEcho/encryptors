@@ -8,7 +8,7 @@ Before using scripts install dependencies by `npm i` in project folder.
 
 In the project directory, you can run:
 
-`npm start <algorithm> <filename> <key file (or hash file)> <flag>`
+#### `npm start <algorithm> <filename> <key file (or hash file)> <flag>`
 
 ### Availible algorithms:
 
@@ -28,7 +28,7 @@ Flags:
 
 `/d` - decrypt file
 
-#### `hash` - creating dile hash with SHA-256 algorithm
+#### `hash` - creating file hash with SHA-256 algorithm
 
 Flags:
 
