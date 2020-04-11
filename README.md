@@ -12,25 +12,25 @@ In the project directory, you can run:
 
 ### Availible algorithms:
 
-`gost-ecb` - GOST 28147 with ECB
+#### `gost-ecb` - GOST 28147 with ECB
 
-#### Availible flags:
-
-`/e` - encrypt file and generate key file
-
-`/d` - decrypt file
-
-`stream` - stream encryption
-
-#### Availible flags:
+Flags:
 
 `/e` - encrypt file and generate key file
 
 `/d` - decrypt file
 
-`hash` - creating dile hash with SHA-256 algorithm
+#### `stream` - stream encryption
 
-#### Availible flags:
+Flags:
+
+`/e` - encrypt file and generate key file
+
+`/d` - decrypt file
+
+#### `hash` - creating dile hash with SHA-256 algorithm
+
+Flags:
 
 `/c` - generate file hash and write it to file
 
