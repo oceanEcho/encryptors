@@ -46,7 +46,7 @@ To decrypt the file by GOST 28147 with ECB:
 
 `npm start gost-ecb file.txt key /d`
 
-To generate file hash and write it to file:
+To generate file.txt hash and write it to еру file-has.txt:
 
 `npm start hash file.txt file-hash.txt /c`
 
