@@ -19,8 +19,9 @@ const createHighBit  = (register, chekingBits) => {
   chekingBits.forEach(bitNumber => {
     if (result !== undefined) {
       result = result ^ Number(register.get(bitNumber).toString());
+    } else {
+      result = Number(register.get(bitNumber).toString());
     }
-    result = Number(register.get(bitNumber).toString());
   });
 
   return result;
@@ -28,7 +29,11 @@ const createHighBit  = (register, chekingBits) => {
 
 
 const shiftRight = (register) => {
-  const shiftedRegister = register.toString().slice(0, -1);
+  let shiftedRegister = register.toString().slice(0, -1);
+
+  if (shiftedRegister === '') {
+    shiftedRegister = '0';
+  }
 
   return new BitSet(shiftedRegister);
 };
@@ -62,16 +67,19 @@ const GammaGenerator = (initialFirstRegister, initialSecondRegister) => {
   let secondRegister = initialSecondRegister;
 
   return () => {
-    firstRegister = shiftRight(firstRegister)
-      .set(FIRST_REGISTER_LENGTH, createHighBit(firstRegister, FIRST_REGISTER_SIGNIFICANT_BITS));
+    firstRegister = shiftRight(firstRegister);
+    firstRegister = firstRegister.set(FIRST_REGISTER_LENGTH, createHighBit(firstRegister, FIRST_REGISTER_SIGNIFICANT_BITS));
 
     const controlBit = Number(firstRegister.get(20).toString());
 
     if (controlBit) {
-      secondRegister = shiftRight(secondRegister)
-        .set(FIRST_REGISTER_LENGTH, createHighBit(secondRegister, SECOND__REGISTER_SIGNIFICANT_BITS));
+      secondRegister = shiftRight(secondRegister);
+      secondRegister = secondRegister.set(FIRST_REGISTER_LENGTH, createHighBit(secondRegister, SECOND__REGISTER_SIGNIFICANT_BITS));
     }
-    
+
+    // To use simple LFSR uncomment this line
+    // return Number(firstRegister.get(0).toString());
+
     return (
       Number(secondRegister.get(91).toString())
       || Number(secondRegister.get(89).toString())
