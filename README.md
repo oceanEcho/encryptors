@@ -8,29 +8,29 @@ Before using scripts install dependencies by `npm i` in project folder.
 
 In the project directory, you can run:
 
-`npm start <algorithm> <filename> <key file (or hash file)> <flag>`
+#### `npm start <algorithm> <filename> <key file (or hash file)> <flag>`
 
 ### Availible algorithms:
 
-`gost-ecb` - GOST 28147 with ECB
+#### `gost-ecb` - GOST 28147 with ECB
 
-#### Availible flags:
-
-`/e` - encrypt file and generate key file
-
-`/d` - decrypt file
-
-`stream` - stream encryption
-
-#### Availible flags:
+Flags:
 
 `/e` - encrypt file and generate key file
 
 `/d` - decrypt file
 
-`hash` - creating dile hash with SHA-256 algorithm
+#### `stream` - stream encryption
 
-#### Availible flags:
+Flags:
+
+`/e` - encrypt file and generate key file
+
+`/d` - decrypt file
+
+#### `hash` - creating file hash with SHA-256 algorithm
+
+Flags:
 
 `/c` - generate file hash and write it to file
 
@@ -46,7 +46,7 @@ To decrypt the file by GOST 28147 with ECB:
 
 `npm start gost-ecb file.txt key /d`
 
-To generate file hash and write it to file:
+To generate file.txt hash and write it to the file-has.txt:
 
 `npm start hash file.txt file-hash.txt /c`
 
