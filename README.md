@@ -1,6 +1,6 @@
 This project created on [Node.js](https://nodejs.org/en/).
 
-To run scipts you must have [Node.js](https://nodejs.org/en/) grater than 10.15.3 version.
+To run scipts you must have [Node.js](https://nodejs.org/en/) greater than 10.15.3 version.
 
 Before using scripts install dependencies by `npm i` in project folder.
 
